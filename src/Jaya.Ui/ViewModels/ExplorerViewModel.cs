@@ -8,6 +8,7 @@ using Jaya.Shared.Models;
 using Jaya.Ui.Models;
 using Jaya.Ui.Services;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -68,23 +69,49 @@ namespace Jaya.Ui.ViewModels
             DirectoryModel directory = null;
             switch (obj.Type.Value)
             {
+                //case ItemType.Computer:
                 case ItemType.Drive:
                 case ItemType.Directory:
-                    directory = obj.Object as DirectoryModel;
+                    /*string dirPath = "NULL";
+                    bool hasObj = obj.Object != null;
+                    if (hasObj)
+                    {
+                        dirPath = "NOT NULL: ";
+                        if (obj.Object is FileSystemObjectModel mdl)
+                            dirPath += mdl.Path;
+                        else
+                            dirPath += obj.Object.GetType().FullName;
+                    }
+
+                    Debug.WriteLine("DirectoryModel Time!\n  ItemType: " + obj.Type.Value + "\n      DirectoryPath: " + dirPath);*/
+
+
+                    /*if ((obj.Type.Value == ItemType.Computer) && obj.Object is AccountModelBase accnt)
+                        _account = accnt;*/
+                    
+                    directory = obj.FileSystemObject as DirectoryModel;
                     break;
 
                 case ItemType.File:
                     break;
 
                 case ItemType.Computer:
-                    directory = obj.Object as DirectoryModel;
+                    //Debug.WriteLine("obj.Object.GetType().FullName: " + obj.Object.GetType().FullName);
+                    _account = obj.Account as AccountModelBase;
+                    directory = obj.FileSystemObject as DirectoryModel;
+                    //obj.Children
+                    //obj.
+                    //Debug.WriteLine("obj.Children.Count: " + obj.Children.Count);
+                    /*directory = new DirectoryModel()
+                    {};*/
+                    //directory = obj.Object as DirectoryModel;
                     break;
                 case ItemType.Account:
-                    _account = obj.Object as AccountModelBase;
+                    _account = obj.Account as AccountModelBase;
                     break;
 
                 case ItemType.Service:
-                    _service = obj.Object as ProviderServiceBase;
+                    _service = obj.Service as ProviderServiceBase;
                     _account = null;
                     break;
             }
@@ -106,6 +133,7 @@ namespace Jaya.Ui.ViewModels
 
             if (_account == null)
             {
+                Debug.WriteLine("_account == null");
                 var accounts = await _service.GetAccountsAsync();
                 var serviceItem = new ExplorerItemModel(ItemType.Service, _service.Name, _service.ImagePath);
 
@@ -113,23 +141,26 @@ namespace Jaya.Ui.ViewModels
                 {
                     await Task.Run(new Action(() =>
                     {
-                        var accountItem = new ExplorerItemModel(_service.IsRootDrive ? ItemType.Computer : ItemType.Account, account.Name, account);
-                        serviceItem.Children.Add(accountItem);
+                        if (_service.IsRootDrive)
+                            serviceItem.Children.Add(new ExplorerItemModel(ItemType.Computer, account.Name, account: account, fsObject: new DirectoryModel(), service: _service));
+                        else
+                            serviceItem.Children.Add(new ExplorerItemModel(ItemType.Account, account.Name, account: account));
                     }));
                 }
-
+                
                 Item = serviceItem;
             }
             else if (args.Directory != null)
             {
+                Debug.WriteLine("args.Directory != null");
                 var directory = await args.Service.GetDirectoryAsync(args.Account, args.Directory);
-                var directoryItem = new ExplorerItemModel(directory.Type == FileSystemObjectType.Drive ? ItemType.Drive : ItemType.Directory, directory.Name, directory);
+                var directoryItem = new ExplorerItemModel(directory.Type == FileSystemObjectType.Drive ? ItemType.Drive : ItemType.Directory, directory.Name, fsObject: directory);
 
                 foreach (var subDirectory in directory.Directories)
                 {
                     await Task.Run(new Action(() =>
                     {
-                        var subDirectoryItem = new ExplorerItemModel(subDirectory.Type == FileSystemObjectType.Drive ? ItemType.Drive : ItemType.Directory, subDirectory.Name, subDirectory);
+                        var subDirectoryItem = new ExplorerItemModel(subDirectory.Type == FileSystemObjectType.Drive ? ItemType.Drive : ItemType.Directory, subDirectory.Name, fsObject: subDirectory);
                         directoryItem.Children.Add(subDirectoryItem);
                     }));
                 }
@@ -140,7 +171,7 @@ namespace Jaya.Ui.ViewModels
                     {
                         await Task.Run(new Action(() =>
                         {
-                            var fileItem = new ExplorerItemModel(ItemType.File, file.Name, file);
+                            var fileItem = new ExplorerItemModel(ItemType.File, file.Name, fsObject: file);
                             directoryItem.Children.Add(fileItem);
                         }));
                     }
@@ -148,6 +179,8 @@ namespace Jaya.Ui.ViewModels
 
                 Item = directoryItem;
             }
+            else
+                Debug.WriteLine("NO DIRECTORY");
 
             IsBusy = false;
         }

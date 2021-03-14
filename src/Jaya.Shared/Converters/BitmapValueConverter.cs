@@ -4,9 +4,11 @@
 //
 using Avalonia;
 using Avalonia.Data.Converters;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace Jaya.Shared.Converters
@@ -20,7 +22,7 @@ namespace Jaya.Shared.Converters
             if (value == null)
                 return null;
 
-            if (value is string && targetType == typeof(IBitmap))
+            if (value is string && targetType == typeof(IImage))
             {
                 var uri = new Uri((string)value, UriKind.RelativeOrAbsolute);
                 var scheme = uri.IsAbsoluteUri ? uri.Scheme : "file";
@@ -36,6 +38,8 @@ namespace Jaya.Shared.Converters
                 }
             }
 
+            //Debug.WriteLine("Error:\nvalue: " + value + "\ntargetType: " + targetType + "\nparemeter: " + parameter + "\nculture: " + culture);
+            //return null;
             throw new NotSupportedException();
         }
 

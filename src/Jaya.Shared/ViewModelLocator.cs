@@ -22,17 +22,17 @@ namespace Jaya.Shared
             AutoWireViewModelProperty.Changed.Subscribe(args => AutoWireViewModelChanged(args?.Sender, args));
         }
 
-        public static bool GetAutoWireViewModel(AvaloniaObject control)
+        public static bool GetAutoWireViewModel(IAvaloniaObject control)
         {
             return (bool)control.GetValue(AutoWireViewModelProperty);
         }
 
-        public static void SetAutoWireViewModel(AvaloniaObject control, bool value)
+        public static void SetAutoWireViewModel(IAvaloniaObject control, bool value)
         {
             control.SetValue(AutoWireViewModelProperty, value);
         }
 
-        static void AutoWireViewModelChanged(AvaloniaObject control, AvaloniaPropertyChangedEventArgs e)
+        static void AutoWireViewModelChanged(IAvaloniaObject control, AvaloniaPropertyChangedEventArgs e)
         {
             if (Design.IsDesignMode)
                 return;

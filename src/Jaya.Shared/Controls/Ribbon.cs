@@ -41,8 +41,9 @@ namespace Jaya.Shared.Controls
             get => _helpCommand;
             set => SetAndRaise(HelpButtonCommandProperty, ref _helpCommand, value);
         }
+        
 
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e)
+        /*protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e)
         {
             switch (e.Property.Name)
             {
@@ -55,7 +56,7 @@ namespace Jaya.Shared.Controls
             }
 
             base.OnPropertyChanged(e);
-        }
+        }*/
 
         Type IStyleable.StyleKey => typeof(Ribbon);
 

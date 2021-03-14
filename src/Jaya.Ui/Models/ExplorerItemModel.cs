@@ -3,18 +3,28 @@
 // Licensed under the 3-Clause BSD license. See LICENSE file in the project root for full license information.
 //
 using Jaya.Shared.Base;
+using Jaya.Shared.Models;
 using System.Collections.ObjectModel;
 
 namespace Jaya.Ui.Models
 {
     public class ExplorerItemModel: ModelBase
     {
-        public ExplorerItemModel(ItemType? type, string label, object obj, string imagePath = null)
+        public ExplorerItemModel(ItemType? type, string label, string imagePath = null, ProviderServiceBase service = null, AccountModelBase account = null, FileSystemObjectModel fsObject = null)
         {
             Type = type;
             Label = label;
             Children = new ObservableCollection<ExplorerItemModel>();
-            Object = obj;
+
+            if (service != null)
+                Service = service;
+            
+            if (account != null)
+                Account = account;
+
+            if (fsObject != null)
+                FileSystemObject = fsObject;
+            //Object = obj;
             ImagePath = imagePath;
         }
 
@@ -22,7 +32,16 @@ namespace Jaya.Ui.Models
 
         internal ItemType? Type { get; }
 
-        public object Object { get; }
+        //public object Object { get; }
+        public FileSystemObjectModel FileSystemObject
+        {
+            get => Get<FileSystemObjectModel>();
+            set => Set(value);
+        }
+
+        public AccountModelBase Account { get; }
+
+        public ProviderServiceBase Service { get; }
 
         public bool IsDummy => Type == ItemType.Dummy;
 

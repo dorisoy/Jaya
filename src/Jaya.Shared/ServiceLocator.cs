@@ -7,6 +7,7 @@ using Jaya.Shared.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -69,7 +70,8 @@ namespace Jaya.Shared
 
             var assemblies = new List<Assembly>();
 
-            foreach (var fileName in Directory.GetFiles(Environment.CurrentDirectory, "Jaya.Provider.*.dll", SearchOption.TopDirectoryOnly))
+            string dirPath = new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName; //Environment.CurrentDirectory
+            foreach (var fileName in Directory.GetFiles(dirPath, "Jaya.Provider.*.dll", SearchOption.TopDirectoryOnly))
             {
                 var assembly = Assembly.LoadFrom(fileName);
                 assemblies.Add(assembly);
@@ -162,6 +164,7 @@ namespace Jaya.Shared
 
         public T GetService<T>() where T : class, IService
         {
+            Debug.WriteLine("GetService<T>()" + typeof(T).FullName);
             if (Container == null)
             {
                 Container = RegisterServices();
@@ -176,6 +179,7 @@ namespace Jaya.Shared
 
         public T GetProviderService<T>() where T : class, IProviderService
         {
+            Debug.WriteLine("GetProviderService<T>()" + typeof(T).FullName);
             if (Container == null)
             {
                 Container = RegisterServices();

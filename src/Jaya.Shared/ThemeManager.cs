@@ -13,7 +13,7 @@ namespace Jaya.Shared
         static readonly object _syncLock;
         static ThemeManager _instance;
         readonly List<ThemeModel> _themes;
-        readonly List<Window> _windows;
+        //readonly List<Window> _windows;
 
         static ThemeManager()
         {
@@ -22,7 +22,7 @@ namespace Jaya.Shared
 
         private ThemeManager()
         {
-            _windows = new List<Window>();
+            //_windows = new List<Window>();
 
             _themes = new List<ThemeModel>
             {
@@ -79,14 +79,14 @@ namespace Jaya.Shared
 
                 if (currentTheme != null)
                 {
-                    foreach (var window in _windows)
-                    {
+                    /*foreach (var window in _windows)
+                    {*/
                         foreach (var style in currentTheme.Styles)
-                            window.Styles.Remove(style);
+                            Application.Current.Styles.Remove(style);
 
                         foreach (var style in SelectedTheme.Styles)
-                            window.Styles.Add(style);
-                    }
+                            Application.Current.Styles.Add(style);
+                    //}
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace Jaya.Shared
                         window.Styles.Add(style);
             }
 
-            window.Opened += (sender, e) =>
+            /*window.Opened += (sender, e) =>
             {
                 _windows.Add(window);
 
@@ -112,7 +112,7 @@ namespace Jaya.Shared
             window.Closing += (sender, e) =>
             {
                 _windows.Remove(window);
-            };
+            };*/
         }
     }
 }

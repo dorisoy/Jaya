@@ -3,9 +3,17 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:v="clr-namespace:Jaya.Ui.Views;assembly=Jaya.Ui"
   xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
-  <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/Gallery.xaml" />
-  <!--StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/Ribbon.xaml" /-->
-  <!--StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonTab.xaml" /-->
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Locale/en-ca.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Styles.Resources>
+  <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/Default/AvaloniaRibbon.xaml" />
+  <!--StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/Gallery.xaml" />
+  <!-StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/Ribbon.xaml" /->
+  <!-StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonTab.xaml" /->
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonMenu.xaml" />
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonWindow.xaml" />
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonButton.xaml" />
@@ -13,7 +21,7 @@
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonSplitButton.xaml" />
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonToggleButton.xaml" />
   <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/RibbonGroupBox.xaml" />
-  <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/KeyTip.xaml" />
+  <StyleInclude Source="avares://AvaloniaUI.Ribbon/Styles/KeyTip.xaml" /-->
 
   <Style Selector="v|RibbonView DrawingPresenter">
     <Setter Property="Width" Value="16"/>
@@ -26,7 +34,7 @@
 
 
   <!-- ribbon -->
-  <Style Selector="local|Ribbon">
+  <!--Style Selector="local|Ribbon">
     <Setter Property="HeaderBackground" Value="{DynamicResource Ribbon.TabStripBackgroundBrush}" />
     <Setter Property="HeaderForeground" Value="{DynamicResource ThemeForegroundBrush}" />
     <Setter Property="Background" Value="{DynamicResource Ribbon.BackgroundBrush}" />
@@ -105,10 +113,10 @@
     <Setter Property="RenderTransform">
       <RotateTransform Angle="180"/>
     </Setter>
-  </Style>
+  </Style-->
 
   <!-- ribbon tabs -->
-  <Style Selector="local|RibbonTab">
+  <!--Style Selector="local|RibbonTab">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -159,11 +167,11 @@
   </Style>
   <Style Selector="local|RibbonTab:selected /template/ Rectangle.RibbonTabBackgroundRectangle">
     <Setter Property="Fill" Value="{DynamicResource Ribbon.TabSelectedBackgroundBrush}" />
-  </Style>
+  </Style-->
   
   
   <!-- ribbon menu -->
-  <Style Selector="local|RibbonMenu">
+  <!--Style Selector="local|RibbonMenu">
     <Setter Property="Background" Value="{DynamicResource Ribbon.FileButtonIdleBrush}"/>
     <Setter Property="Foreground" Value="{DynamicResource Ribbon.FileButtonForegroundBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
@@ -196,19 +204,8 @@
                     <ItemsPresenter x:Name="PART_RightColumnItemsPresenter" Items="{TemplateBinding RightColumnItems}" ItemsPanel="{TemplateBinding RightColumnItemsPanel}" ItemTemplate="{TemplateBinding RightColumnItemTemplate}" IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                     <ItemsPresenter x:Name="SelectedSubItemsPresenter" Items="{TemplateBinding SelectedSubItems}" IsVisible="{TemplateBinding HasSelectedItem}"/>
                   </Panel>
-                  <!--ListBox Classes="RibbonMenuPlacesList" Items="{Binding MenuPlacesItems, RelativeSource={RelativeSource Mode=TemplatedParent}}"/-->
                 </DockPanel>
                 <DockPanel Background="{DynamicResource Ribbon.BackgroundBrush}" Margin="0,0,-6,0">
-                  <!--Menu Classes="RibbonMenuMenu" Items="{Binding MenuItems, RelativeSource={RelativeSource Mode=TemplatedParent}}" Padding="0,34,0,0"/>
-                <ToggleButton Name="BackButton" FontWeight="SemiBold" Classes="RibbonToggleButton" IsChecked="{Binding !IsChecked, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="{Binding Bounds.Width, ElementName=MenuButton, Mode=OneWay}">
-                  <Grid Width="24" Height="24">
-                    <Ellipse Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" StrokeThickness="2"/>
-                    <Grid Width="14" Height="10">
-                      <Rectangle Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Height="2" VerticalAlignment="Center"/>
-                      <Path Data="M 5 0 L 0 5 L 5 10" Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" StrokeThickness="2" HorizontalAlignment="Left"/>
-                    </Grid>
-                  </Grid>
-                </ToggleButton-->
                   <Rectangle Classes="RightwardShadow" DockPanel.Dock="Right"/>
                   <ToggleButton x:Name="BackButton"
                             Height="{TemplateBinding Height}"
@@ -240,20 +237,16 @@
   <Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton">
     <Setter Property="Foreground" Value="{Binding $parent[local:RibbonMenu].Foreground}"/>
   </Style>
-  <!--Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#BackButton:not(:pointerover):not(:pressed):not(:checked)">
-    <Setter Property="Background" Value="{Binding $parent[local:RibbonMenu].Background}"/>
-    <Setter Property="BorderBrush" Value="Transparent"/>
-  </Style-->
   <Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton:pointerover">
     <Setter Property="Background" Value="{DynamicResource Ribbon.FileButtonHoverBrush}"/>
   </Style>
   <Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton:checked">
     <Setter Property="Background" Value="{DynamicResource Ribbon.FileButtonPressedBrush}"/>
-  </Style>
+  </Style-->
   
   
   <!-- ribbon group box -->
-  <Style Selector="local|RibbonGroupBox">
+  <!--Style Selector="local|RibbonGroupBox">
     <Setter Property="Template">
       <ControlTemplate>
         <Border x:Name="EdgeBorder" BorderThickness="0">
@@ -298,7 +291,7 @@
         </Border>
       </ControlTemplate>
     </Setter>
-  </Style>
+  </Style-->
 
 
   <!-- ribbon buttons -->
