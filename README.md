@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/nullvoid-creations/Jaya" target="_blank">
-    <img src="/docs/Logo.png" alt="JayaFM Logo" >
+    <img src="/doc/Logo.png" alt="JayaFM Logo" >
   </a>
 </p>
 <h3 align="center">Jaya File Manager (JayaFM)</h3>
@@ -58,21 +58,21 @@ This project would have not existed without the availbility of below mentioned f
 
 Main Window
 
-![Light Theme Main Window](/docs/MainUI_Light.png)
+![Light Theme Main Window](/doc/MainUI_Light.png)
 
-![Dark Theme Main Window](/docs/MainUI_Dark.png)
+![Dark Theme Main Window](/doc/MainUI_Dark.png)
 
 Options UI (WIP)
 
-![Light Theme Options UI](/docs/Options_Light.png)
+![Light Theme Options UI](/doc/Options_Light.png)
 
-![Dark Theme Options UI](/docs/Options_Dark.png)
+![Dark Theme Options UI](/doc/Options_Dark.png)
 
 Plugins UI (WIP)
 
-![Light Theme Plugins UI](/docs/Plugins_Light.png)
+![Light Theme Plugins UI](/doc/Plugins_Light.png)
 
-![Dark Theme Plugins UI](/docs/Plugins_Dark.png)
+![Dark Theme Plugins UI](/doc/Plugins_Dark.png)
 
 ## Roadmap
 
