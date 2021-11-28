@@ -4,14 +4,11 @@ using Avalonia.Markup.Xaml;
 
 namespace Jaya.Shell.Views
 {
-    public partial class MainWindow : Window
+    public partial class AddressBarView : UserControl
     {
-        public MainWindow()
+        public AddressBarView()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()
