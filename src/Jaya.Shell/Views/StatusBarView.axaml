@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="24"
+    Height="24"
     d:DesignWidth="800"
     Background="#1C1C1C"
     mc:Ignorable="d">
@@ -12,24 +12,36 @@
         <Style Selector="Rectangle.HorizontalSeparator">
             <Setter Property="Fill" Value="#F7F7F7" />
             <Setter Property="Width" Value="2" />
-            <Setter Property="Margin" Value="0,2" />
+            <Setter Property="Margin" Value="0,6" />
         </Style>
         <Style Selector="TextBlock">
             <Setter Property="Foreground" Value="#DEDEDE" />
-            <Setter Property="Margin" Value="12,0" />
+            <Setter Property="Margin" Value="12,4" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
-        <Style Selector="Button">
-            <Setter Property="Background" Value="Red" />
+        <Style Selector="ToggleButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
+        <Style Selector="ToggleButton:checked /template/ ContentPresenter">
+            <Setter Property="Background" Value="#666666" />
+            <Setter Property="BorderBrush" Value="#838383" />
+        </Style>
+        <Style Selector="ToggleButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#4D4D4D" />
+            <Setter Property="BorderBrush" Value="#636363" />
+        </Style>
+        <Style Selector="ToggleButton:pressed  /template/ ContentPresenter">
+            <Setter Property="Background" Value="#666666" />
         </Style>
     </UserControl.Styles>
-    <Grid Margin="3,4" ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto">
+    <Grid Margin="3,0" ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto">
         <TextBlock Text="000 items" />
         <Rectangle Grid.Column="1" Classes="HorizontalSeparator" />
         <TextBlock Grid.Column="2" Text="0 items selected 00.0 KB" />
         <Rectangle Grid.Column="3" Classes="HorizontalSeparator" />
-        <Button Grid.Column="5" />
-        <Button Grid.Column="6" />
+        <ToggleButton Grid.Column="5">A</ToggleButton>
+        <ToggleButton Grid.Column="6">B</ToggleButton>
     </Grid>
 </UserControl>
