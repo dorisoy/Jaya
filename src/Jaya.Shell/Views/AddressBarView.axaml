@@ -1,8 +1,64 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jaya.Shell.Views.AddressBarView">
-  Address Bar
+<UserControl
+    x:Class="Jaya.Shell.Views.AddressBarView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignWidth="800"
+    Background="#191919"
+    mc:Ignorable="d">
+    <Grid Margin="6,8" ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto,150">
+        <Grid.Styles>
+            <Style Selector="Button">
+                <Setter Property="CornerRadius" Value="2" />
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style Selector="Button:pointerover /template/ ContentPresenter">
+                <Setter Property="BorderBrush" Value="#2D2D2D" />
+                <Setter Property="Background" Value="#2D2D2D" />
+            </Style>
+            <Style Selector="Button:pressed  /template/ ContentPresenter">
+                <Setter Property="Background" Value="#242B2D" />
+            </Style>
+
+            <Style Selector="Button > PathIcon">
+                <Setter Property="Width" Value="12" />
+                <Setter Property="Height" Value="12" />
+                <Setter Property="Foreground" Value="#E0DFDF" />
+            </Style>
+        </Grid.Styles>
+        <Button>
+            <PathIcon Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+        </Button>
+        <Button Grid.Column="1">
+            <PathIcon Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+        </Button>
+        <Button
+            Grid.Column="2"
+            Margin="4,0"
+            Padding="0,4">
+            <PathIcon Data="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+        </Button>
+        <Button Grid.Column="3">
+            <PathIcon Data="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+        </Button>
+        <Border
+            Grid.Column="4"
+            Margin="5,-1,0,-1"
+            BorderBrush="#535353"
+            BorderThickness="1">
+        </Border>
+        <GridSplitter
+            Grid.Column="5"
+            Width="8"
+            Background="Transparent"
+            ResizeBehavior="PreviousAndNext"
+            ResizeDirection="Columns" />
+        <Border
+            Grid.Column="6"
+            Margin="0,-1,5,-1"
+            BorderBrush="#535353"
+            BorderThickness="1">
+        </Border>
+    </Grid>
 </UserControl>

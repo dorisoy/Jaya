@@ -9,7 +9,7 @@
     Background="#1C1C1C"
     mc:Ignorable="d">
     <UserControl.Styles>
-        <Style Selector="Rectangle.HorizontalSeparator">
+        <Style Selector="Rectangle.VerticalSeparator">
             <Setter Property="Fill" Value="#F7F7F7" />
             <Setter Property="Width" Value="2" />
             <Setter Property="Margin" Value="0,6" />
@@ -23,6 +23,7 @@
         <Style Selector="ToggleButton">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Padding" Value="2" />
         </Style>
         <Style Selector="ToggleButton:checked /template/ ContentPresenter">
             <Setter Property="Background" Value="#666666" />
@@ -35,13 +36,22 @@
         <Style Selector="ToggleButton:pressed  /template/ ContentPresenter">
             <Setter Property="Background" Value="#666666" />
         </Style>
+        <Style Selector="ToggleButton > PathIcon">
+            <Setter Property="Foreground" Value="#E0DFDF" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+        </Style>
     </UserControl.Styles>
     <Grid Margin="3,0" ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto">
         <TextBlock Text="000 items" />
-        <Rectangle Grid.Column="1" Classes="HorizontalSeparator" />
+        <Rectangle Grid.Column="1" Classes="VerticalSeparator" />
         <TextBlock Grid.Column="2" Text="0 items selected 00.0 KB" />
-        <Rectangle Grid.Column="3" Classes="HorizontalSeparator" />
-        <ToggleButton Grid.Column="5">A</ToggleButton>
-        <ToggleButton Grid.Column="6">B</ToggleButton>
+        <Rectangle Grid.Column="3" Classes="VerticalSeparator" />
+        <ToggleButton Grid.Column="5">
+            <PathIcon Data="M4,5V7H21V5M4,11H21V9H4M4,19H21V17H4M4,15H21V13H4V15Z" />
+        </ToggleButton>
+        <ToggleButton Grid.Column="6">
+            <PathIcon Data="M21,17H7V3H21M21,1H7A2,2 0 0,0 5,3V17A2,2 0 0,0 7,19H21A2,2 0 0,0 23,17V3A2,2 0 0,0 21,1M3,5H1V21A2,2 0 0,0 3,23H19V21H3V5Z" />
+        </ToggleButton>
     </Grid>
 </UserControl>
