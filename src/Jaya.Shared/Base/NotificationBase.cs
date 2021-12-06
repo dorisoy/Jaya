@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Jaya.Shared.Base
 {
@@ -9,7 +10,7 @@ namespace Jaya.Shared.Base
 
         public bool IsNotificationEnabled { get; set; }
 
-        protected void RaisePropertyChanged(string propertyName)
+        protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (string.IsNullOrEmpty(propertyName))
                 throw new ArgumentNullException(nameof(propertyName), "Property name can't be empty.");

@@ -55,24 +55,28 @@
                 <Setter Property="Fill" Value="#323232" />
             </Style>
 
-            <Style Selector="ContextMenu">
+            <Style Selector="MenuFlyoutPresenter">
                 <Setter Property="Background" Value="#2E2E2E" />
                 <Setter Property="CornerRadius" Value="4" />
-                <Setter Property="TextBlock.FontSize" Value="14" />
-                <Setter Property="PlacementMode" Value="Bottom" />
+                <Setter Property="BorderBrush" Value="#000000" />
+                <Setter Property="TextBlock.FontSize" Value="12" />
             </Style>
-            <Style Selector="ContextMenu > MenuItem">
+
+            <Style Selector="MenuFlyoutPresenter > Separator">
+                <Setter Property="Height" Value="1" />
+                <Setter Property="Background" Value="#3D3D3D" />
+                <Setter Property="Margin" Value="0,1" />
+            </Style>
+
+            <Style Selector="MenuItem">
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="Foreground" Value="#FFFFFF" />
                 <Setter Property="Margin" Value="2" />
                 <Setter Property="CornerRadius" Value="4" />
             </Style>
-            <Style Selector="ContextMenu > Separator">
-                <Setter Property="Background" Value="#3D3D3D" />
-                <Setter Property="Margin" Value="0,1" />
-            </Style>
-            <Style Selector="MenuItem:selected /template/ Border#root">
-                <Setter Property="Background" Value="#3A3A3A" />
-                <Setter Property="BorderBrush" Value="#3A3A3A" />
+            <Style Selector="MenuItem /template/ Path#rightArrow">
+                <Setter Property="Fill" Value="#FFFFFF" />
+                <Setter Property="Data" Value="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
             </Style>
         </Border.Styles>
         <StackPanel Margin="3,0" Orientation="Horizontal">
@@ -82,6 +86,15 @@
                     <TextBlock Text="New" />
                     <PathIcon Classes="Chevron" />
                 </StackPanel>
+                <Button.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                        <MenuItem Header="Folder">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M12 12H14V10H16V12H18V14H16V16H14V14H12V12M22 8V18C22 19.11 21.11 20 20 20H4C2.89 20 2 19.11 2 18V6C2 4.89 2.89 4 4 4H10L12 6H20C21.11 6 22 6.89 22 8M20 8H4V18H20V8Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuFlyout>
+                </Button.Flyout>
             </Button>
             <Rectangle Classes="VerticalSeparator" />
             <Button>
@@ -116,12 +129,88 @@
                     <TextBlock Text="View" />
                     <PathIcon Classes="Chevron" />
                 </StackPanel>
+                <Button.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                        <MenuItem Header="Extra large icons">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M9,6H5V10H7V8H9M19,10H17V12H15V14H19M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Large icons">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Medium-sized icons">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14V20H16V22H8V20H10V18H3C1.89,18 1,17.1 1,16V4C1,2.89 1.89,2 3,2H21M12.97,9H16L13.53,10.76L14.47,13.67L12,11.87L9.53,13.67L10.47,10.76L8,9H11.03L12,6L12.97,9Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Small icons">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M19 2H5C3.89 2 3 2.89 3 4V16C3 17.11 3.9 18 5 18H10V20H8V22H16V20H14V18H19C20.11 18 21 17.11 21 16V4C21 2.89 20.1 2 19 2M19 16H5V4H19V16Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="List">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M3,3H11V5H3V3M13,3H21V5H13V3M3,7H11V9H3V7M13,7H21V9H13V7M3,11H11V13H3V11M13,11H21V13H13V11M3,15H11V17H3V15M13,15H21V17H13V15M3,19H11V21H3V19M13,19H21V21H13V19Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Details">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M4,5V7H21V5M4,11H21V9H4M4,19H21V17H4M4,15H21V13H4V15Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Tiles">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M3,4H7V8H3V4M9,5V7H21V5H9M3,10H7V14H3V10M9,11V13H21V11H9M3,16H7V20H3V16M9,17V19H21V17H9" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Content">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M2 14H8V20H2M16 8H10V10H16M2 10H8V4H2M10 4V6H22V4M10 20H16V18H10M10 16H22V14H10" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Header="Compact view">
+                            <MenuItem.Icon>
+                                <PathIcon Data="M4,12H20V14H4V12M4,9H20V11H4V9M16,4L12,8L8,4H11V1H13V4H16M8,19L12,15L16,19H13V22H11V19H8Z" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Header="Show">
+                            <MenuItem Header="Navigation pane">
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Details pane">
+                            </MenuItem>
+                            <MenuItem Header="Preview pane">
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Item check boxes">
+                                <MenuItem.Icon>
+                                    <PathIcon Data="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,5V19H5V5H19M10,17L6,13L7.41,11.58L10,14.17L16.59,7.58L18,9" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="File name extensions">
+                                <MenuItem.Icon>
+                                    <PathIcon Data="M10 18H8V16H10V18M10 14H8V8H10V14M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2M18 20H6V4H13V9H18V20Z" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Hidden items">
+                                <MenuItem.Icon>
+                                    <PathIcon Data="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                    </MenuFlyout>
+                </Button.Flyout>
             </Button>
             <Rectangle Classes="VerticalSeparator" />
             <Button>
                 <PathIcon Data="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z" />
-                <Button.ContextMenu>
-                    <ContextMenu>
+                <Button.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
                         <MenuItem Header="Undo">
                             <MenuItem.Icon>
                                 <PathIcon Data="M20 13.5C20 17.09 17.09 20 13.5 20H6V18H13.5C16 18 18 16 18 13.5S16 9 13.5 9H7.83L10.91 12.09L9.5 13.5L4 8L9.5 2.5L10.92 3.91L7.83 7H13.5C17.09 7 20 9.91 20 13.5Z" />
@@ -160,8 +249,8 @@
                                 <PathIcon Data="M4 4C2.89 4 2 4.89 2 6V18C2 19.11 2.9 20 4 20H12V18H4V8H20V12H22V8C22 6.89 21.1 6 20 6H12L10 4M18 14C17.87 14 17.76 14.09 17.74 14.21L17.55 15.53C17.25 15.66 16.96 15.82 16.7 16L15.46 15.5C15.35 15.5 15.22 15.5 15.15 15.63L14.15 17.36C14.09 17.47 14.11 17.6 14.21 17.68L15.27 18.5C15.25 18.67 15.24 18.83 15.24 19C15.24 19.17 15.25 19.33 15.27 19.5L14.21 20.32C14.12 20.4 14.09 20.53 14.15 20.64L15.15 22.37C15.21 22.5 15.34 22.5 15.46 22.5L16.7 22C16.96 22.18 17.24 22.35 17.55 22.47L17.74 23.79C17.76 23.91 17.86 24 18 24H20C20.11 24 20.22 23.91 20.24 23.79L20.43 22.47C20.73 22.34 21 22.18 21.27 22L22.5 22.5C22.63 22.5 22.76 22.5 22.83 22.37L23.83 20.64C23.89 20.53 23.86 20.4 23.77 20.32L22.7 19.5C22.72 19.33 22.74 19.17 22.74 19C22.74 18.83 22.73 18.67 22.7 18.5L23.76 17.68C23.85 17.6 23.88 17.47 23.82 17.36L22.82 15.63C22.76 15.5 22.63 15.5 22.5 15.5L21.27 16C21 15.82 20.73 15.65 20.42 15.53L20.23 14.21C20.22 14.09 20.11 14 20 14M19 17.5C19.83 17.5 20.5 18.17 20.5 19C20.5 19.83 19.83 20.5 19 20.5C18.16 20.5 17.5 19.83 17.5 19C17.5 18.17 18.17 17.5 19 17.5Z" />
                             </MenuItem.Icon>
                         </MenuItem>
-                    </ContextMenu>
-                </Button.ContextMenu>
+                    </MenuFlyout>
+                </Button.Flyout>
             </Button>
         </StackPanel>
     </Border>

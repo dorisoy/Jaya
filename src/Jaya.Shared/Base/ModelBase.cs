@@ -1,4 +1,6 @@
-﻿namespace Jaya.Shared.Base
+﻿using System.Runtime.CompilerServices;
+
+namespace Jaya.Shared.Base
 {
     public abstract class ModelBase : NotificationBase
     {
@@ -11,7 +13,7 @@
             IsNotificationEnabled = true;
         }
 
-        protected T Get<T>(string propertyName)
+        protected T Get<T>([CallerMemberName] string propertyName = "")
         {
             if (string.IsNullOrEmpty(propertyName))
                 throw new ArgumentNullException(nameof(propertyName), "Property name can't be empty.");
@@ -22,7 +24,7 @@
             return default;
         }
 
-        protected void Set<T>(string propertyName, T value)
+        protected void Set<T>(T value, [CallerMemberName] string propertyName = "")
         {
             if (string.IsNullOrEmpty(propertyName))
                 throw new ArgumentNullException(nameof(propertyName), "Property name can't be empty.");

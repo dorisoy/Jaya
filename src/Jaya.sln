@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaya.Shell", "Jaya.Shell\Jaya.Shell.csproj", "{DF8F9916-4495-43BD-89C1-383AC774A537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jaya.Shared", "Jaya.Shared\Jaya.Shared.csproj", "{A996771C-D59F-4B80-89B3-16CF24E015B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaya.Shared", "Jaya.Shared\Jaya.Shared.csproj", "{A996771C-D59F-4B80-89B3-16CF24E015B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jaya.Storage.FileSystem", "Jaya.Storage.FileSystem\Jaya.Storage.FileSystem.csproj", "{2CE62663-4502-4D5D-8085-B98E038862B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A996771C-D59F-4B80-89B3-16CF24E015B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A996771C-D59F-4B80-89B3-16CF24E015B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A996771C-D59F-4B80-89B3-16CF24E015B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE62663-4502-4D5D-8085-B98E038862B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE62663-4502-4D5D-8085-B98E038862B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE62663-4502-4D5D-8085-B98E038862B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE62663-4502-4D5D-8085-B98E038862B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
